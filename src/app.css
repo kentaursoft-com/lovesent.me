@@ -1,0 +1,212 @@
+@import 'tailwindcss';
+@plugin 'daisyui' {
+  themes: valentine --default, cupcake;
+}
+
+/* ===== Custom Fonts ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, .font-dancing {
+  font-family: 'Dancing Script', cursive;
+}
+
+/* ===== Floating Hearts Animation ===== */
+.heart-float {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatHeart linear forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(1);
+    opacity: 0.9;
+  }
+  25% {
+    transform: translateY(75vh) rotate(90deg) scale(1.1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg) scale(0.9);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(25vh) rotate(270deg) scale(1.05);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* ===== Pulse Animation ===== */
+@keyframes pulse-heart {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.animate-pulse-heart {
+  animation: pulse-heart 1.5s ease-in-out infinite;
+}
+
+/* ===== Bounce Animation ===== */
+@keyframes bounce-cute {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.animate-bounce-cute {
+  animation: bounce-cute 2s ease-in-out infinite;
+}
+
+/* ===== Screen Shake ===== */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-8px); }
+  20% { transform: translateX(8px); }
+  30% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  50% { transform: translateX(-4px); }
+  60% { transform: translateX(4px); }
+  70% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+  90% { transform: translateX(-1px); }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* ===== Glow Effect ===== */
+.glow-pink {
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.4), 0 0 40px rgba(255, 105, 180, 0.2);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4), 0 0 40px rgba(168, 85, 247, 0.2);
+}
+
+/* ===== Heart Loader ===== */
+.loader-heart {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.loader-heart::before,
+.loader-heart::after {
+  content: '💖';
+  font-size: 2rem;
+  position: absolute;
+  animation: pulse-heart 1s ease-in-out infinite;
+}
+
+.loader-heart::after {
+  animation-delay: 0.5s;
+  left: 30px;
+}
+
+/* ===== Smooth Card Styles ===== */
+.card-cute {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-cute:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(255, 105, 180, 0.15);
+}
+
+/* ===== Gradient Backgrounds ===== */
+.bg-love-gradient {
+  background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 50%, #e8eaf6 100%);
+}
+
+.bg-love-gradient-dark {
+  background: linear-gradient(135deg, #f48fb1 0%, #ce93d8 50%, #9fa8da 100%);
+}
+
+/* ===== Cursor Trail Heart ===== */
+.cursor-heart {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1rem;
+  z-index: 9999;
+  animation: fadeUp 1s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.5);
+  }
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fce4ec;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f48fb1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ec407a;
+}
+
+/* ===== Accessibility: High Contrast Mode ===== */
+[data-theme="clear"] {
+  --p: 0 0% 20%;
+  --s: 0 0% 40%;
+  --a: 0 0% 60%;
+  --n: 0 0% 95%;
+  --b1: 0 0% 100%;
+  --bc: 0 0% 10%;
+}
+
+/* ===== Skip Link ===== */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #ff69b4;
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ===== Button Transitions ===== */
+.btn {
+  transition: all 0.3s ease;
+}
+
+/* ===== Step Wizard Progress ===== */
+.wizard-step {
+  transition: all 0.4s ease;
+}
+
+.wizard-step.active {
+  transform: scale(1.05);
+}
