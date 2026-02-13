@@ -117,12 +117,62 @@
 </main>
 
 <!-- Footer -->
-<footer class="footer footer-center p-8 bg-base-200/60 text-base-content mt-12 relative z-10">
-	<div>
-		<p class="font-dancing text-2xl text-pink-500" aria-hidden="true">💕 Love Sent 💕</p>
-		<p class="text-sm text-gray-500">Made with 💖 and lots of love © {new Date().getFullYear()}</p>
-		<p class="text-xs text-gray-400 italic mt-2">
-			"Every love story is beautiful, but yours will be legendary." 🌹
-		</p>
+<footer class="relative z-10 mt-12 bg-base-200/60 border-t border-pink-100">
+	<div class="max-w-6xl mx-auto px-4 py-10">
+		<!-- Top section: brand + link columns -->
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+			<!-- Brand -->
+			<div class="sm:col-span-2 lg:col-span-1">
+				<a href="/" class="inline-flex items-center gap-2 text-2xl font-dancing text-pink-600 hover:text-pink-700 mb-3">
+					<span aria-hidden="true">💕</span> Love Sent
+				</a>
+				<p class="text-sm text-gray-500 leading-relaxed max-w-xs">
+					The cutest way to confess your feelings! Create interactive confession pages that are impossible to refuse. 💖
+				</p>
+			</div>
+
+			<!-- Platform -->
+			<div>
+				<h3 class="font-semibold text-gray-700 mb-3 text-sm uppercase tracking-wide">Platform</h3>
+				<ul class="space-y-2">
+					<li><a href="/create" class="text-sm text-gray-500 hover:text-pink-600 transition-colors">Create Confession ✨</a></li>
+					<li><a href="/dashboard" class="text-sm text-gray-500 hover:text-pink-600 transition-colors">Dashboard</a></li>
+					<li><a href="/signup" class="text-sm text-gray-500 hover:text-pink-600 transition-colors">Sign Up Free</a></li>
+					<li><a href="/login" class="text-sm text-gray-500 hover:text-pink-600 transition-colors">Log In</a></li>
+				</ul>
+			</div>
+
+			<!-- Company -->
+			<div>
+				<h3 class="font-semibold text-gray-700 mb-3 text-sm uppercase tracking-wide">Company</h3>
+				<ul class="space-y-2">
+					<li><a href="/about" class="text-sm text-gray-500 hover:text-pink-600 transition-colors">About Us</a></li>
+					<li><a href="/contact" class="text-sm text-gray-500 hover:text-pink-600 transition-colors">Contact</a></li>
+					<li><a href="https://kentaursoft.com" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-500 hover:text-pink-600 transition-colors">Kentaur Soft Inc. ↗</a></li>
+				</ul>
+			</div>
+
+			<!-- Legal -->
+			<div>
+				<h3 class="font-semibold text-gray-700 mb-3 text-sm uppercase tracking-wide">Legal</h3>
+				<ul class="space-y-2">
+					<li><a href="/privacy" class="text-sm text-gray-500 hover:text-pink-600 transition-colors">Privacy Policy</a></li>
+					<li><a href="/terms" class="text-sm text-gray-500 hover:text-pink-600 transition-colors">Terms of Service</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Divider -->
+		<div class="border-t border-pink-100"></div>
+
+		<!-- Bottom bar -->
+		<div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6">
+			<p class="text-sm text-gray-500 text-center sm:text-left">
+				© 2026 Love Sent (<a href="https://lovesent.me" class="text-pink-500 hover:text-pink-700">lovesent.me</a>) — A product of <a href="https://kentaursoft.com" target="_blank" rel="noopener noreferrer" class="text-pink-500 hover:text-pink-700 font-medium">Kentaur Soft Inc.</a> All rights reserved.
+			</p>
+			<p class="text-xs text-gray-400 italic" aria-hidden="true">
+				Made with 💖 and lots of love
+			</p>
+		</div>
 	</div>
 </footer>
