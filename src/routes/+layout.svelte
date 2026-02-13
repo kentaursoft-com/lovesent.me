@@ -2,7 +2,7 @@
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { toasts, theme } from '$lib/stores';
-	import { Heart, LogIn, LogOut, LayoutDashboard, Plus, Sparkles } from 'lucide-svelte';
+	import { LogIn, LogOut, LayoutDashboard, Plus, Sparkles } from 'lucide-svelte';
 
 	let { children, data } = $props();
 	let heartContainer: HTMLDivElement;
@@ -46,7 +46,6 @@
 <nav class="navbar bg-base-100/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-pink-100" aria-label="Main navigation">
 	<div class="navbar-start">
 		<a href="/" class="btn btn-ghost text-xl font-dancing text-pink-600 hover:text-pink-700 gap-1" aria-label="Love Sent home page">
-			<Heart class="w-6 h-6 text-pink-500 fill-pink-500 animate-pulse-heart" aria-hidden="true" />
 			<span class="hidden sm:inline">Love Sent</span>
 			<span class="sm:hidden">LS</span>
 			<span aria-hidden="true">💖</span>
@@ -124,7 +123,7 @@
 			<!-- Brand -->
 			<div class="sm:col-span-2 lg:col-span-1">
 				<a href="/" class="inline-flex items-center gap-2 text-2xl font-dancing text-pink-600 hover:text-pink-700 mb-3">
-					<span aria-hidden="true">💕</span> Love Sent
+					Love Sent
 				</a>
 				<p class="text-sm text-gray-500 leading-relaxed max-w-xs">
 					The cutest way to confess your feelings! Create interactive confession pages that are impossible to refuse. 💖
