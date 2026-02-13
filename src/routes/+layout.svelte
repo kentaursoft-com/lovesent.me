@@ -45,10 +45,9 @@
 <!-- Navigation Bar -->
 <nav class="navbar bg-base-100/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-pink-100" aria-label="Main navigation">
 	<div class="navbar-start">
-		<a href="/" class="btn btn-ghost text-xl font-dancing text-pink-600 hover:text-pink-700 gap-1" aria-label="Love Sent home page">
+		<a href="/" class="btn btn-ghost text-xl font-dancing text-pink-600 hover:text-pink-700" aria-label="Love Sent home page">
 			<span class="hidden sm:inline">Love Sent</span>
 			<span class="sm:hidden">LS</span>
-			<span aria-hidden="true">💖</span>
 		</a>
 	</div>
 
