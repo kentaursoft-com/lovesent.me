@@ -1,12 +1,9 @@
-// ===== Storage Module for R2 & Backblaze B2 =====
+// ===== Storage Module for Backblaze B2 =====
 // Handles photo uploads for confession pages
 
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 interface StorageEnv {
-	PHOTOS_BUCKET: R2Bucket;
-	R2_PUBLIC_URL?: string;
-	USE_BACKBLAZE?: string;
 	BACKBLAZE_KEY_ID?: string;
 	BACKBLAZE_APP_KEY?: string;
 	BACKBLAZE_BUCKET_NAME?: string;
@@ -26,20 +23,7 @@ export function validateImage(file: File): { valid: boolean; error?: string } {
 	return { valid: true };
 }
 
-// Upload to Cloudflare R2 (primary)
-export async function uploadToR2(
-	bucket: R2Bucket,
-	key: string,
-	data: ArrayBuffer,
-	contentType: string
-): Promise<string> {
-	await bucket.put(key, data, {
-		httpMetadata: { contentType }
-	});
-	return key;
-}
-
-// Upload to Backblaze B2 (alternative/backup)
+// Upload to Backblaze B2 via S3-compatible API
 export async function uploadToBackblaze(
 	env: StorageEnv,
 	key: string,
@@ -55,19 +39,21 @@ export async function uploadToBackblaze(
 		}
 	});
 
+	const bucketName = env.BACKBLAZE_BUCKET_NAME || 'lovesent-photos';
+
 	await s3.send(
 		new PutObjectCommand({
-			Bucket: env.BACKBLAZE_BUCKET_NAME || 'lovesent-photos',
+			Bucket: bucketName,
 			Key: key,
 			Body: new Uint8Array(data),
 			ContentType: contentType
 		})
 	);
 
-	return `https://f000.backblazeb2.com/file/${env.BACKBLAZE_BUCKET_NAME}/${key}`;
+	return `https://f000.backblazeb2.com/file/${bucketName}/${key}`;
 }
 
-// Unified upload function — picks R2 or Backblaze based on env config
+// Upload a photo for a confession page
 export async function uploadPhoto(
 	env: StorageEnv,
 	file: File,
@@ -84,16 +70,8 @@ export async function uploadPhoto(
 	const data = await file.arrayBuffer();
 
 	try {
-		if (env.USE_BACKBLAZE === 'true') {
-			// Use Backblaze B2
-			const url = await uploadToBackblaze(env, key, data, file.type);
-			return { url };
-		} else {
-			// Use Cloudflare R2 (default)
-			await uploadToR2(env.PHOTOS_BUCKET, key, data, file.type);
-			const publicUrl = env.R2_PUBLIC_URL || '';
-			return { url: `${publicUrl}/${key}` };
-		}
+		const url = await uploadToBackblaze(env, key, data, file.type);
+		return { url };
 	} catch (err) {
 		console.error('Upload error:', err);
 		return { url: '', error: 'Failed to upload photo. Please try again! 😢' };

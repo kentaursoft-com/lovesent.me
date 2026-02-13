@@ -29,7 +29,7 @@
 | Styling | Tailwind CSS v4 + DaisyUI v5 |
 | Database | Cloudflare D1 (SQLite) |
 | ORM | Drizzle ORM |
-| File Storage | Cloudflare R2 / Backblaze B2 |
+| File Storage | Backblaze B2 |
 | Auth | JWT (jose) + PBKDF2 password hashing |
 | Email | Resend.com API |
 | Animations | canvas-confetti + CSS animations |
@@ -41,7 +41,7 @@
 
 - Node.js 18+ (recommended: 20+)
 - npm 9+
-- Cloudflare account with D1 + R2 configured
+- Cloudflare account with D1 configured
 - (Optional) Resend.com API key for email notifications
 
 ### Installation
@@ -102,7 +102,7 @@ lovesent.co/
 │   │   │   ├── db.ts         # Drizzle ORM instance
 │   │   │   ├── email.ts      # Resend email notifications
 │   │   │   ├── schema.ts     # Database schema (users, confessions)
-│   │   │   └── storage.ts    # R2/Backblaze photo uploads
+│   │   │   └── storage.ts    # Backblaze B2 photo uploads
 │   │   ├── stores.ts         # Svelte stores (wizard, toasts, theme)
 │   │   └── utils.ts          # Helpers, quotes, share URLs, no-options
 │   └── routes/
@@ -137,18 +137,15 @@ Set these in your Cloudflare Pages dashboard under **Settings > Environment Vari
 |----------|-------------|----------|
 | `JWT_SECRET` | Secret key for JWT signing | ✅ |
 | `RESEND_API_KEY` | Resend.com API key for emails | Optional |
-| `USE_BACKBLAZE` | `true` to use Backblaze B2 instead of R2 | Optional |
-| `BACKBLAZE_KEY_ID` | Backblaze B2 key ID | If using B2 |
-| `BACKBLAZE_APP_KEY` | Backblaze B2 application key | If using B2 |
-| `BACKBLAZE_BUCKET_NAME` | Backblaze bucket name | If using B2 |
-| `R2_PUBLIC_URL` | Public URL for R2 bucket | Optional |
+| `BACKBLAZE_KEY_ID` | Backblaze B2 key ID | ✅ |
+| `BACKBLAZE_APP_KEY` | Backblaze B2 application key | ✅ |
+| `BACKBLAZE_BUCKET_NAME` | Backblaze B2 bucket name | ✅ |
 
 ## 🎨 Cloudflare Bindings
 
 In your Cloudflare Pages project settings, add these bindings:
 
 - **D1 Database:** Binding name `DB`, select your `lovesent-db` database
-- **R2 Bucket:** Binding name `PHOTOS_BUCKET`, select your `lovesent-photos` bucket
 
 ## 💕 User Flow
 

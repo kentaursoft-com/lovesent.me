@@ -10,10 +10,6 @@ database_name = "lovesent-db"
 database_id = "d802f4f9-4396-4e22-8c86-8dcb3aea7c85"
 migrations_dir = "drizzle"
 
-[[r2_buckets]]
-binding = "PHOTOS_BUCKET"
-bucket_name = "lovesent-photos"
-
 # Environment variables should be set in Cloudflare Dashboard or .dev.vars
 # JWT_SECRET = "your-secret-here"
 # RESEND_API_KEY = "your-resend-key"
